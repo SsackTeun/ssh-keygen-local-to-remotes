@@ -25,11 +25,11 @@ Example Playbook
 ----------------
 - example.playbook
 ---
-- name: Use Example
-  hosts: ssh-key
-  gather_facts: true
-  roles:
-    - ssh-keygen-local-to-remotes
+  - name: Use Example
+    hosts: ssh-key
+    gather_facts: true
+    roles:
+      - ssh-keygen-local-to-remotes
  
 - example.inventory
 [ssh-key]
