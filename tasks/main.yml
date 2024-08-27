@@ -1,0 +1,15 @@
+---
+# tasks file for ssh-keygen-local-to-remotes
+- name: Generate and Distribute SSH Key
+  connection: local
+  command: >
+    ssh-keygen -b {{ ssh_keygen_options.key_size }} -t {{ ssh_keygen_options.key_type }} -f ~/.ssh/id_rsa -q -N "{{ ssh_keygen_options.passphrase }}"
+  args:
+    creates: ~/.ssh/id_rsa.pub
+  ignore_errors: yes
+
+- name: Distribute SSH public key to managed nodes
+  authorized_key:
+    user: root
+    state: present
+    key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"

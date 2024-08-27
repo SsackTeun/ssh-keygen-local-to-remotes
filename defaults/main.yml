@@ -1,0 +1,6 @@
+---
+# defaults file for ssh-keygen-local-to-remotes
+ssh_keygen_options:
+  key_size: 2048
+  key_type: rsa
+  passphrase: ''
